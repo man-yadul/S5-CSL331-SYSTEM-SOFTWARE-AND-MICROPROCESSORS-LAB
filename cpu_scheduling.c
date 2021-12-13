@@ -1,3 +1,9 @@
+/*
+Simulate the following non pre-emptive CPU scheduling algorithms to find turnaround time and waiting time 
+a) FCFS b) SJF c) Round Robin (Pre-emptive) d)Priority. 
+Also display the average turnaround time and waiting time.
+*/
+
 #include <stdio.h>
  
 struct process
