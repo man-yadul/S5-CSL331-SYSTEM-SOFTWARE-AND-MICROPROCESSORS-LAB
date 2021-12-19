@@ -19,7 +19,6 @@ struct directory
 struct directory *tl_directory = NULL;
 char two_level_root[20];
 
-
 void tl_display()
 {
     struct directory *ptr1;
