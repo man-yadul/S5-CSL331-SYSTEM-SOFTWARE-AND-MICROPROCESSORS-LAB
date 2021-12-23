@@ -104,7 +104,7 @@ void main()
         avail_blcks[i] = i;
 
     do
-	{
+    {
         printf("\tMENU\n");
         printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
         scanf("%d", &choice);
