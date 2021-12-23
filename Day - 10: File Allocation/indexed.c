@@ -7,7 +7,7 @@ struct file
 {
 	char name[20];
 	int no_of_blocks;
-    int index;
+	int index;
 	int blocks[20];
 }files[20];
 
@@ -111,18 +111,18 @@ void main()
 
 	do
 	{
-        printf("\tMENU\n");
-        printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
-        scanf("%d", &choice);
+		printf("\tMENU\n");
+		printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
+		scanf("%d", &choice);
 
-        switch (choice)
-        {
-            case 1: create();
-                    file_count++;
-                    display();
-                    break;
-            case 2: display();
-                    break;
-        }
+		switch (choice)
+		{
+		    case 1: create();
+			    file_count++;
+			    display();
+			    break;
+		    case 2: display();
+			    break;
+		}
 	} while (choice >= 1 && choice <= 2);
 }
