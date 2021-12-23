@@ -5,9 +5,9 @@
 
 struct file
 {
-	char name[20];
-	int no_of_blocks;
-	int blocks[20];
+    char name[20];
+    int no_of_blocks;
+    int blocks[20];
 }files[20];
 
 // Stores number of total blocks
@@ -103,7 +103,7 @@ void main()
     for (int i = total_blocks - 1; i >= 0; i--)
         avail_blcks[i] = i;
 
-	do
+    do
 	{
         printf("\tMENU\n");
         printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
@@ -118,5 +118,5 @@ void main()
             case 2: display();
                     break;
         }
-	} while (choice >= 1 && choice <= 2);
+    } while (choice >= 1 && choice <= 2);
 }
