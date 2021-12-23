@@ -5,10 +5,10 @@
 
 struct file
 {
-	char name[20];
-	int no_of_blocks;
-	int index;
-	int blocks[20];
+    char name[20];
+    int no_of_blocks;
+    int index;
+    int blocks[20];
 }files[20];
 
 // Stores number of total blocks
@@ -92,7 +92,7 @@ void display()
 
 void main()
 {
-	int choice;
+    int choice;
 
     srand(time(NULL));
 
@@ -109,20 +109,20 @@ void main()
     for (int i = total_blocks - 1; i >= 0; i--)
         avail_blcks[i] = i;
 
-	do
-	{
-		printf("\tMENU\n");
-		printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
-		scanf("%d", &choice);
+    do
+    {
+        printf("\tMENU\n");
+        printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
+        scanf("%d", &choice);
 
-		switch (choice)
-		{
-		    case 1: create();
-			    file_count++;
-			    display();
-			    break;
-		    case 2: display();
-			    break;
-		}
-	} while (choice >= 1 && choice <= 2);
+        switch (choice)
+        {
+            case 1: create();
+                    file_count++;
+                    display();
+                    break;
+            case 2: display();
+                    break;
+        }
+    } while (choice >= 1 && choice <= 2);
 }
