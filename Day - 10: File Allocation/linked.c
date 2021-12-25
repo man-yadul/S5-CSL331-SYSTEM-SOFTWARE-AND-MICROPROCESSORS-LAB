@@ -16,7 +16,7 @@ int total_blocks;
 int remaining_blocks;
 // Stores the file count
 int file_count = 0;
-// Stores the block numbers which is used for random selection (contains total blocks, total blocks - 1, ..., 2, 1, 0)
+// Stores the block numbers which is used for random selection (contains total blocks - 1, total blocks - 2, ..., 2, 1, 0)
 int avail_blcks[500];
 
 void create()
@@ -101,7 +101,7 @@ void main()
         for (int j = 0; j < 20; j++)
             files[i].blocks[j] = -1;
 
-    // Generating block numbers which is used for random selection (contains total blocks, total blocks - 1, ..., 2, 1, 0)
+    // Generating block numbers which is used for random selection (contains total blocks - 1, total blocks - 2, ..., 2, 1, 0)
     for (int i = total_blocks - 1; i >= 0; i--)
         avail_blcks[i] = i;
 
