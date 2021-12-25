@@ -5,10 +5,10 @@
 
 struct file
 {
-    char name[20];
-    int no_of_blocks;
+	char name[20];
+	int no_of_blocks;
     int index;
-    int blocks[20];
+	int blocks[20];
 }files[20];
 
 // Stores number of total blocks
@@ -19,6 +19,23 @@ int remaining_blocks;
 int file_count = 0;
 // Stores the block numbers which is used for random selection (contains total blocks, total blocks - 1, ..., 2, 1, 0)
 int avail_blcks[500];
+
+// Sort the remaining blocks (descending) when a block no. is set as -1 during random selection 
+void sort()
+{
+    for (int a = 0; a < remaining_blocks; a++) 
+    {
+        for (int b = a + 1; b < remaining_blocks; b++) 
+        {
+            if (avail_blcks[a] < avail_blcks[b]) 
+            {
+                int temp = avail_blcks[a];
+                avail_blcks[a] = avail_blcks[b];
+                avail_blcks[b] = temp;
+            }
+        }
+    }
+}
 
 void create()
 {
@@ -39,8 +56,16 @@ void create()
     else
     {
         // Generate a random number for index block
-        // (rand() % (1000 - total_blocks + 1)) + total_blocks: means total_blocks < random number < 1000
-        files[file_count].index = (rand() % (1000 - total_blocks + 1)) + total_blocks;
+        rand_arr_index = rand() % remaining_blocks;
+        item = avail_blcks[rand_arr_index];
+        // The chosen block number is set to -1 in avail_blcks[] so that it is not chosen again
+        avail_blcks[rand_arr_index] = -1;
+        // Sorting avail_blcks[] (descending) so that -1 is not chosen in next file creation
+        sort();
+
+        // Assign random number generated as index block
+        files[file_count].index = item;
+        remaining_blocks--;
 
         for (int i = 0; i < files[file_count].no_of_blocks; i++)
         {
@@ -49,20 +74,8 @@ void create()
             item = avail_blcks[rand_arr_index];
             // The chosen block number is set to -1 in avail_blcks[] so that it is not chosen again
             avail_blcks[rand_arr_index] = -1;
- 
             // Sorting avail_blcks[] (descending) so that -1 is not chosen in next file creation
-            for (int a = 0; a < remaining_blocks; a++) 
-            {
-                for (int b = a + 1; b < remaining_blocks; b++) 
-                {
-                    if (avail_blcks[a] < avail_blcks[b]) 
-                    {
-                        int temp = avail_blcks[a];
-                        avail_blcks[a] = avail_blcks[b];
-                        avail_blcks[b] = temp;
-                    }
-                }
-            }
+            sort();
 
             files[file_count].blocks[i] = item;
             remaining_blocks--;
@@ -88,11 +101,13 @@ void display()
             printf("\n");              
         }
     }
+
+    printf("Remaining blocks: %d\n", remaining_blocks);
 }
 
 void main()
 {
-    int choice;
+	int choice;
 
     srand(time(NULL));
 
@@ -109,8 +124,8 @@ void main()
     for (int i = total_blocks - 1; i >= 0; i--)
         avail_blcks[i] = i;
 
-    do
-    {
+	do
+	{
         printf("\tMENU\n");
         printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
         scanf("%d", &choice);
@@ -124,5 +139,5 @@ void main()
             case 2: display();
                     break;
         }
-    } while (choice >= 1 && choice <= 2);
+	} while (choice >= 1 && choice <= 2);
 }
