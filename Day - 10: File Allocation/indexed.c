@@ -5,10 +5,10 @@
 
 struct file
 {
-	char name[20];
-	int no_of_blocks;
+    char name[20];
+    int no_of_blocks;
     int index;
-	int blocks[20];
+    int blocks[20];
 }files[20];
 
 // Stores number of total blocks
@@ -20,7 +20,7 @@ int file_count = 0;
 // Stores the block numbers which is used for random selection (contains total blocks, total blocks - 1, ..., 2, 1, 0)
 int avail_blcks[500];
 
-// Sort the remaining blocks (descending) when a block no. is set as -1 during random selection 
+// Sort the remaining blocks (descending) when they are set as -1 during random selection 
 void sort()
 {
     for (int a = 0; a < remaining_blocks; a++) 
@@ -48,7 +48,7 @@ void create()
     scanf("%d", &files[file_count].no_of_blocks);
 
     // If nob > remaining blocks available
-    if (files[file_count].no_of_blocks > remaining_blocks)
+    if (files[file_count].no_of_blocks + 1 > remaining_blocks)
     {
         printf("Not enough blocks available.\n");
         return;
@@ -58,11 +58,10 @@ void create()
         // Generate a random number for index block
         rand_arr_index = rand() % remaining_blocks;
         item = avail_blcks[rand_arr_index];
-        // The chosen block number is set to -1 in avail_blcks[] so that it is not chosen again
+        // The chosen index block no. is set to -1 in avail_blcks[] so that it is not chosen again
         avail_blcks[rand_arr_index] = -1;
         // Sorting avail_blcks[] (descending) so that -1 is not chosen in next file creation
         sort();
-
         // Assign random number generated as index block
         files[file_count].index = item;
         remaining_blocks--;
@@ -107,7 +106,7 @@ void display()
 
 void main()
 {
-	int choice;
+    int choice;
 
     srand(time(NULL));
 
@@ -124,20 +123,25 @@ void main()
     for (int i = total_blocks - 1; i >= 0; i--)
         avail_blcks[i] = i;
 
-	do
-	{
+    do
+    {
         printf("\tMENU\n");
         printf("1. Create file\n2. Display files\n3. Exit\nEnter choice: ");
         scanf("%d", &choice);
 
         switch (choice)
-        {
-            case 1: create();
+	{
+            case 1: if (remaining_blocks == 0)
+                    {
+                        printf("All blocks are allocated.\n");
+                        break;
+                    }
+                    create();
                     file_count++;
                     display();
                     break;
             case 2: display();
                     break;
         }
-	} while (choice >= 1 && choice <= 2);
+    } while (choice >= 1 && choice <= 2);
 }
