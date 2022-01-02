@@ -17,29 +17,12 @@ int total_blocks;
 int remaining_blocks;
 // Stores the file count
 int file_count = 0;
-// Stores the block numbers which is used for random selection (contains total blocks - 1, total blocks - 2, ..., 2, 1, 0)
-int avail_blcks[500];
-
-// Sort the remaining blocks (descending) when they are set as -1 during random selection 
-void sort()
-{
-    for (int a = 0; a < remaining_blocks; a++) 
-    {
-        for (int b = a + 1; b < remaining_blocks; b++) 
-        {
-            if (avail_blcks[a] < avail_blcks[b]) 
-            {
-                int temp = avail_blcks[a];
-                avail_blcks[a] = avail_blcks[b];
-                avail_blcks[b] = temp;
-            }
-        }
-    }
-}
+// Generating block numbers which is used for random selection (1 - block available, 0 - unavailable)
+int avail_blcks[100];
 
 void create()
 {
-    int rand_arr_index, item;
+    int count, rand_block;
 
     printf("Enter file name: ");
     scanf("%s", files[file_count].name);
@@ -55,30 +38,31 @@ void create()
     }
     else
     {
-        // Generate a random number for index block
-        rand_arr_index = rand() % remaining_blocks;
-        item = avail_blcks[rand_arr_index];
-        // The chosen index block no. is set to -1 in avail_blcks[] so that it is not chosen again
-        avail_blcks[rand_arr_index] = -1;
-        // Sorting avail_blcks[] (descending) so that -1 is not chosen in next file creation
-        sort();
-        // Assign random number generated as index block
-        files[file_count].index = item;
-        remaining_blocks--;
-
-        for (int i = 0; i < files[file_count].no_of_blocks; i++)
+        count = 0;
+        
+        do 
         {
-            // Generate a random index and use this index to select a block number from avail_blcks[]
-            rand_arr_index = rand() % remaining_blocks;
-            item = avail_blcks[rand_arr_index];
-            // The chosen block number is set to -1 in avail_blcks[] so that it is not chosen again
-            avail_blcks[rand_arr_index] = -1;
-            // Sorting avail_blcks[] (descending) so that -1 is not chosen in next file creation
-            sort();
+            // Generate a random block
+            rand_block = rand() % total_blocks; 
+	    
+	    // If block status is set as available
+            if (avail_blcks[rand_block] != 0)
+            {
+		// If index block is not allocated
+                if (files[file_count].index == -1)
+                {
+                    files[file_count].index = rand_block;
+                    avail_blcks[rand_block] = 0;
+                    remaining_blocks--;
+                    continue;
+                }
 
-            files[file_count].blocks[i] = item;
-            remaining_blocks--;
-        }
+                files[file_count].blocks[count] = rand_block;
+                count++;
+                avail_blcks[rand_block] = 0;
+                remaining_blocks--;
+            }
+        } while (count < files[file_count].no_of_blocks);
     }
 }
 
@@ -110,18 +94,24 @@ void main()
 
     srand(time(NULL));
 
+    printf("Yadul Manoj\t69\n");
     printf("Enter total no. of blocks: ");
     scanf("%d", &total_blocks);
 
     remaining_blocks = total_blocks;
 
     for (int i = 0; i < 20; i++)
+    {
         for (int j = 0; j < 20; j++)
+        {
             files[i].blocks[j] = -1;
+            files[i].index = -1;
+        }
+    }
 
-    // Generating block numbers which is used for random selection (contains total blocks - 1, total blocks - 2, ..., 2, 1, 0)
-    for (int i = total_blocks - 1; i >= 0; i--)
-        avail_blcks[i] = i;
+    // Generating block numbers which is used for random selection (1 - block available, 0 - unavailable)
+    for (int i = 0; i < total_blocks; i++)
+        avail_blcks[i] = 1;
 
     do
     {
@@ -130,7 +120,7 @@ void main()
         scanf("%d", &choice);
 
         switch (choice)
-	{
+        {
             case 1: if (remaining_blocks == 0)
                     {
                         printf("All blocks are allocated.\n");
