@@ -1,5 +1,5 @@
 ; Yadul Manoj 69
-; 8086 program to subtract two 32-bit numbers (with borrow)
+; 8086 program to subtract two 32-bit numbers
 ; The operands are 32 bit hex numbers NUM1 and NUM2
 ; The final result is stored in a double word reserved in the memory (RESULT)
 
@@ -22,7 +22,7 @@ START:
 	MOV WORD PTR RESULT, AX         ; Move 16-bit result in AX to lower 16-bits of RESULT
 	MOV AX, WORD PTR NUM1 + 2       ; Move lower 16-bits (word) of NUM2 to AX register
 	MOV BX, WORD PTR NUM2 + 2       ; Move higher 16-bits (word) of NUM2 to BX register
-	SBB AX, BX                      ; Subtract BX from AX (with borrow from previous subtraction)
+	SBB AX, BX                      ; Subtract BX from AX (with borrow from previous 16-bit subtraction)
 	MOV WORD PTR RESULT + 2, AX     ; Move 16-bit result in AX to higher 16-bits of RESULT
 	MOV WORD PTR RESULT + 4, CX     ; Store carry in the word succeeding to 2 words of RESULT 
 	MOV AH, 4CH             	; Return to DOS prompt
