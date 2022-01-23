@@ -7,9 +7,9 @@
 ASSUME CS: CODE, DS: DATA
 
 DATA SEGMENT
-	NUM1 DD 98975423H               	; First operand
-	NUM2 DD 8234B758H               	; Second operand
-	RESULT DD ?                     	; Double word of memory reserved for result
+	NUM1 DD 98975423H               ; First operand
+	NUM2 DD 8234B758H               ; Second operand
+	RESULT DD ?                     ; Double word of memory reserved for result
 DATA ENDS
 
 CODE SEGMENT
