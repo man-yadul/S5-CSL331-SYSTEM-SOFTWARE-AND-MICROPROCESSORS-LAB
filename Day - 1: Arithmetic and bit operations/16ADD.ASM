@@ -9,9 +9,9 @@
 ASSUME CS: CODE, DS: DATA
 
 DATA SEGMENT
-	NUM1 DW 0EC54H          	; First operand
-	NUM2 DW 5678H           	; Second operand
-	RESULT DW 01 DUP(?)     	; Word of memory reserved for result
+	NUM1 DW 0EC54H		; First operand
+	NUM2 DW 5678H		; Second operand
+	RESULT DW 01 DUP(?)	; Word of memory reserved for result
 DATA ENDS
 
 CODE SEGMENT
@@ -24,7 +24,7 @@ START:
 	XOR CX, CX              ; Clear CX register
 	ADD AX, BX              ; Add the operands, result is stored in AX
 	JNC NEXT                ; Jump to NEXT if no carry is generated
-	INC CX                  ; Carry is generated and CX is incremented to signify a carry and store it in result
+	INC CX                  ; Carry is generated and CX is incremented to signify a carry to store it in result
 NEXT:
 	MOV DI, OFFSET RESULT   ; Move offset of RESULT to DI
 	MOV [DI], AX            ; Store result at memory address in DI
