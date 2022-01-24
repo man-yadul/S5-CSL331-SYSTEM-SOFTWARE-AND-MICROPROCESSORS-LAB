@@ -1,5 +1,5 @@
 ; Yadul Manoj 69
-; 8086 program to add two 32-bit numbers (with borrow)
+; 8086 program to add two 32-bit numbers (with carry)
 ; The operands are 32 bit hex numbers NUM1 and NUM2
 ; The final result is stored in a double word reserved in the memory (RESULT)
 ; If a carry is generated, it is stored in the next word succeeding to 2 words of RESULT
