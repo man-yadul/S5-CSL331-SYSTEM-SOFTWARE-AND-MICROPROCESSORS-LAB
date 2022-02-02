@@ -6,9 +6,9 @@
 ASSUME CS: CODE, DS: DATA
 
 DATA SEGMENT
-    NUM1 DW 0FFFFH	; First operand
-    NUM2 DW 0AAAAH	; Second operand
-    RESULT DD ?		; Double word of memory reserved for result
+    NUM1 DW 0FFFFH	    ; First operand
+    NUM2 DW 0AAAAH	    ; Second operand
+    RESULT DD ?		    ; Double word of memory reserved for result
 DATA ENDS
 
 CODE SEGMENT
@@ -16,8 +16,8 @@ START:
     MOV AX, DATA    	; Initialize data segment
     MOV DS, AX
 
-    MOV AX, NUM1	; Move NUM1 to AX register
-    MUL NUM2		; Multiply value in AX to NUM2 (lower 16 bits of result is stored in AX and remaining 16 bits in DX)
+    MOV AX, NUM1	    ; Move NUM1 to AX register
+    MUL NUM2		    ; Multiply value in AX to NUM2 (lower 16 bits of result is stored in AX and remaining 16 bits in DX)
 
     LEA BX, RESULT    	; Load effective address of RESULT to BX
     MOV [BX], AX      	; Move first 16-bits of result in AX to address stored in BX
