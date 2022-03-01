@@ -25,7 +25,7 @@ START:
 
     MOV BX, 00H                                         ; Acts as an index when each character is stored in byte locations of STR
 L1:                                                     ; User enters the whole string and the loop stores each character of the string in memory
-    MOV AH, 01H                                         ; Get character of the string
+    MOV AH, 01H                                         ; Get string
     INT 21H
 
     CMP AL, 0DH                                         ; Check for carriage return (if enter key is pressed)
