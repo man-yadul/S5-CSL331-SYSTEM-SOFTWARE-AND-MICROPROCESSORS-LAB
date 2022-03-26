@@ -45,11 +45,15 @@
 8. Write a programme to perform interfacing of LED display using 8086 trainer kit.
 
 #### Day 6
-9. Write programmes to perform the basic arithmetic operations on 8051 kit
-(a) Add two eight bit numbers in the registers
-(b) Subtract two numbers
-(c) Multiply two numbers
-(d) Divide two numbers
+9. Write programs to perform the basic arithmetic and logic operations on 8051 kit
+(a) Addition using immediate addressing mode
+(b) Subtraction using register addressing mode
+(c) Multiplication using direct addressing mode
+(d) Division using register indirect addressing mode
+(e) NOT using immediate addressing mode
+(f) OR using register addressing mode
+(g) AND using direct addressing mode
+(h) XOR using register indirect addressing mode
 
 #### Day 7
 10. Write programmes to perform interfacing operation using 8086 MASM
