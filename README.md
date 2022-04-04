@@ -94,3 +94,8 @@ c) Linked
 
 #### Day 14
 19. Write a C program to implement a single pass macro pre-processor.
+
+#### Day 15
+20. 8051 Keil Timer Programming
+a) Generate a square wave using software techniques.
+b) Generate a square wave with 20ms delay using timer 1 in mode 1
