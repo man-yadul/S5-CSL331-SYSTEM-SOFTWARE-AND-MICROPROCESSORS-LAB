@@ -1,3 +1,7 @@
+; Yadul Manoj 69
+; Factorial of a number with user input
+; The program can handle factorials which can be represented by upto 2 bytes (upto 8!) 
+
 ASSUME CS: CODE, DS: DATA
 
 DATA SEGMENT
