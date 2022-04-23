@@ -33,7 +33,7 @@ NEXT:
 	MOV [DI], CX            	; Store carry
 	
 	; Printing starts here
-	MOV AH, 02H			; Used for print interrupt call
+	MOV AH, 02H				; Used for print interrupt call
 	MOV CX, 03H			; Stores the no. of bytes to be printed. eg:- CX here is 3 because two bytes for result and 1 byte for carry
 	MOV BX, OFFSET RESULT + 2	; Move the last byte of result to be printed first. eg:- If result is 0142CC, move byte 01
 PRINT:
