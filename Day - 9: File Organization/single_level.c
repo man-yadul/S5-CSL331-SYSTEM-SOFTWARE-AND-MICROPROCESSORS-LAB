@@ -8,14 +8,6 @@ struct file
     struct file* next;
 };
 
-struct directory
-{
-    char dirname[20];
-    struct file* flstart;
-    struct directory* dlstart;
-    struct directory* next;
-};
-
 struct file* slds = NULL;
 char single_level_root[20];
 
