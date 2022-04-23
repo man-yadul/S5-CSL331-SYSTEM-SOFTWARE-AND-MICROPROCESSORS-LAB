@@ -16,21 +16,21 @@ DATA ENDS
 
 CODE SEGMENT
 START:
-	MOV AX, DATA            ; Initialize data segment
+	MOV AX, DATA            	; Initialize data segment
 	MOV DS, AX
-	MOV AX, NUM1            ; Move NUM1 to AX register
-	MOV BX, NUM2            ; Move NUM2 to BX register
-	CLC                     ; Clear carry flag
-	XOR CX, CX              ; Clear CX register
-	ADD AX, BX              ; Add the operands, result is stored in AX
-	JNC NEXT                ; Jump to NEXT if no carry is generated
-	INC CX                  ; Carry is generated and CX is incremented to signify a carry to store it in result
+	MOV AX, NUM1            	; Move NUM1 to AX register
+	MOV BX, NUM2            	; Move NUM2 to BX register
+	CLC                     	; Clear carry flag
+	XOR CX, CX              	; Clear CX register
+	ADD AX, BX              	; Add the operands, result is stored in AX
+	JNC NEXT                	; Jump to NEXT if no carry is generated
+	INC CX                  	; Carry is generated and CX is incremented to signify a carry to store it in result
 NEXT:
-	MOV DI, OFFSET RESULT   ; Move offset of RESULT to DI
-	MOV [DI], AX            ; Store result at memory address in DI
-	INC DI                  ; DI before this instruction points to the offset of RESULT. A word beginning from this location is already occupied for 16-bit result
-	INC DI                  ; In order to store the carry at the next word, INC is done twice since it only increments by a byte 
-	MOV [DI], CX            ; Store carry
+	MOV DI, OFFSET RESULT   	; Move offset of RESULT to DI
+	MOV [DI], AX            	; Store result at memory address in DI
+	INC DI                  	; DI before this instruction points to the offset of RESULT. A word beginning from this location is already occupied for 16-bit result
+	INC DI                  	; In order to store the carry at the next word, INC is done twice since it only increments by a byte 
+	MOV [DI], CX            	; Store carry
 	
 	; Printing starts here
 	MOV AH, 02H					; Used for print interrupt call
