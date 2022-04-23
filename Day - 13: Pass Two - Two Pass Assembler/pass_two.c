@@ -56,7 +56,7 @@ void main()
         strcpy(start_addr, operand);
         // Set starting address of first text record
         text_rec_addr = (int)strtol(start_addr, NULL, 16);
-        // Get program length from intermediate file
+        // Get program length from length file
         fscanf(flength, "%x", &prog_len);
     }
     printf("H^%s^%06x^%06x\n", label, (int)strtol(start_addr, NULL, 16), prog_len);
