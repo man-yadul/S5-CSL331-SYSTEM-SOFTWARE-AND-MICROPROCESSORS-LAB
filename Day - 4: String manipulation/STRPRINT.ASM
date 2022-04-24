@@ -14,7 +14,7 @@ START:
 
     LEA DX, STRING              ; Load effective address of STRING to DX
 
-    MOV AH, 9                   ; Call interrupt to print string
+    MOV AH, 09H                 ; Call interrupt to print string
 	INT 21H 
 
     MOV AH, 4CH                 ; Return to DOS prompt
