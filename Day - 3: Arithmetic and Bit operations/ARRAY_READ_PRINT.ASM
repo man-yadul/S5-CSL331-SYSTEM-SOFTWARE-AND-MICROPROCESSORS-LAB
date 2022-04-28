@@ -1,5 +1,5 @@
 ; Yadul Manoj 69
-; 8086 program to enter and display an array of digits
+; 8086 program to read and display an array of digits
 ; The digits to be entered are single digit numbers
 ; The size of the array is entered before receiving the digits
 
