@@ -48,6 +48,7 @@ L1:
 
     XOR AX, AX
 
+    ; Print "ENTER NUMBER: "
     LEA DX, STR2
     MOV AH, 09H
     INT 21H
