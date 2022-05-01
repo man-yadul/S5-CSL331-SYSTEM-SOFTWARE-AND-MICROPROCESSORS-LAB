@@ -46,8 +46,7 @@ L2:
 
     ; Palindrome checking starts here
     ; DI is used for indexing from beginning of the string to end
-    ; SI is used for indexing from end of the string to beginning
-    ; SI at the point holds the length of the string including '$'
+    ; SI is used for indexing from end of the string to beginning (SI at this point holds the length of the string including '$')
     ; AL and BL stores the characters pointed by DI and SI
     ; Loop ends when value in DI > SI
 
