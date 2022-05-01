@@ -1,3 +1,6 @@
+; Yadul Manoj   69
+; String palindrome with user input
+
 ASSUME CS: CODE, DS: DATA
 
 DATA SEGMENT
